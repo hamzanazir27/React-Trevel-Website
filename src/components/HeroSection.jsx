@@ -1,34 +1,84 @@
 import Navbar from "./Navbar";
-
-// imp;
+import heroBg from "../assets/home-herosection-background.jpg";
 
 function HeroSection() {
   return (
     <div
-      className="relative h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/home-herosection-background.jpg')" }}
+      className="relative h bg-cove-screenr bg-center bg-fixed z-0 pt-20"
+      style={{
+        backgroundImage: `url(${heroBg})`,
+      }}
     >
       {/* NavBar */}
-      <Navbar />
+      {/* <Navbar /> */}
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      {/* Enhanced Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/70"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-300/30 rounded-full animate-ping"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-white/15 rounded-full animate-pulse delay-700"></div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Explore the World with Us
-        </h1>
-        <p className="text-lg md:text-2xl mb-6">Your journey begins here</p>
+      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center text-center text-white px-6">
+        <div className="max-w-5xl mx-auto space-y-8">
+          {/* Main Heading */}
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-7xl font-extrabold leading-tight">
+              <span className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-pulse">
+                Explore the World
+              </span>
+              <span className="block text-3xl md:text-5xl font-normal text-blue-200 mt-2">
+                with Us
+              </span>
+            </h1>
 
-        {/* Buttons */}
-        <div className="flex space-x-4">
-          <button className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition">
-            Learn More
-          </button>
-          <button className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-            Book Now
-          </button>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto"></div>
+          </div>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-3xl font-light text-gray-200 max-w-3xl mx-auto leading-relaxed">
+            Your journey begins here, where dreams meet destinations
+          </p>
+
+          {/* Enhanced Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+            <button className="group relative bg-white text-blue-600 font-bold px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl min-w-[160px]">
+              <span className="relative z-10">Learn More</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            </button>
+
+            <button className="group relative bg-gradient-to-r from-blue-600 to-blue-600 text-white font-bold px-8 py-4 rounded-full hover:from-blue-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 min-w-[160px]">
+              <span className="relative z-10">Book Now</span>
+              <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+            </button>
+          </div>
+
+          {/* Additional Info */}
+          <div className="pt-12">
+            <div className="flex justify-center items-center space-x-8 text-sm text-gray-300">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <span>Trusted by 10k+ travelers</span>
+              </div>
+              <div className="hidden sm:block w-px h-4 bg-gray-500"></div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
+                <span>Premium destinations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+          </div>
         </div>
       </div>
     </div>

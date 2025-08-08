@@ -1,4 +1,8 @@
-import img1 from "../assets/Papolar-destinations/malam-jaba-2.jpg";
+import { Link } from "react-router-dom";
+import img1 from "../assets/reviews/r-9.jpg";
+import img2 from "../assets/reviews/r-11.jpg";
+import { useContext } from "react";
+import TripContext from "../context/TripContxt";
 
 const destinations = [
   {
@@ -10,7 +14,7 @@ const destinations = [
     tags: ["Family", "Views", "Local Food"],
   },
   {
-    imgSrc: img1,
+    imgSrc: img2,
     heading: "Skardu",
     type: "Adventure",
     days: "7 Days",
@@ -21,7 +25,7 @@ const destinations = [
 
 function TopDestinations() {
   return (
-    <section className="py-16 px-6  bg-indigo-100">
+    <section className="py-16 px-6">
       <div className="max-w-6xl mx-auto ">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">
           OUR TOP DESTINATIONS
@@ -46,6 +50,9 @@ function TopDestinations() {
 }
 
 function TopDestinationCard({ imgSrc, heading, type, days, review, tags }) {
+  const { setImg } = useContext(TripContext);
+
+  const id = heading.split(" ")[0].toLowerCase();
   return (
     <div className="bg-white shadow-lg rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
       <div className="relative">
@@ -64,7 +71,7 @@ function TopDestinationCard({ imgSrc, heading, type, days, review, tags }) {
           <p className="text-lg text-yellow-500 font-medium">{review}</p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-10">
           {tags.map((tag, i) => (
             <span
               key={i}
@@ -74,10 +81,18 @@ function TopDestinationCard({ imgSrc, heading, type, days, review, tags }) {
             </span>
           ))}
         </div>
-
-        <button className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300">
+        <Link
+          onClick={() => setImg("contact")}
+          to={`/contacts/${id}`}
+          className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300 mt-8 pl-30 pr-30"
+        >
+          {" "}
           Book Now
-        </button>
+        </Link>
+
+        {/* <button className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300">
+          Book Now
+        </button> */}
       </div>
     </div>
   );
@@ -98,11 +113,8 @@ function TopDestinationInfo() {
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Categories</h2>
       <div className="space-y-3">
         {filters.map((f, i) => (
-          <div
-            key={i}
-            className="flex items-center space-x-3 p-3 rounded-xl hover:bg-blue-50 transition-colors duration-300 cursor-pointer"
-          >
-            <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+          <div key={i} className="flex items-center space-x-3 p-3 rounded-xl ">
+            <div> ✔</div>
             <span className="text-gray-800 font-medium text-lg">{f}</span>
           </div>
         ))}

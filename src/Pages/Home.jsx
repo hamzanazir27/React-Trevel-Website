@@ -1,4 +1,5 @@
 import Featuresin from "../components/FeaturesIn";
+import HeroSection from "../components/HeroSection";
 import Navbar from "../components/Navbar";
 import PopularDestinations from "../components/PapolarDestinations";
 import RecentTrips from "../components/RecentTrips";
@@ -7,13 +8,13 @@ import TopDestinations from "../components/TopDestinations";
 
 function Home() {
   return (
-    <>
+    <div className="bg-indigo-100">
       <Featuresin />
       <PopularDestinations />
       <TopDestinations />
       <RecentTrips />
       <Reviews />
-    </>
+    </div>
   );
 }
 

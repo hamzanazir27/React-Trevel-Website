@@ -1,17 +1,19 @@
 import Navbar from "./Navbar";
 import heroBg from "../assets/home-herosection-background.jpg";
+import { useContext, useEffect } from "react";
+import TripContext from "../context/TripContxt";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
+  const { user, img, imgTray, setImg } = useContext(TripContext);
+
   return (
     <div
-      className="relative h bg-cove-screenr bg-center bg-fixed z-0 pt-20"
+      className="relative min-h-screen bg-cover bg-center bg-fixed z-0 pt-20"
       style={{
-        backgroundImage: `url(${heroBg})`,
+        backgroundImage: `url(${imgTray[img]})`,
       }}
     >
-      {/* NavBar */}
-      {/* <Navbar /> */}
-
       {/* Enhanced Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/70"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
@@ -24,10 +26,15 @@ function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center text-center text-white px-6">
+      <div className="relative z-20 min-h-screen flex flex-col justify-center items-center text-center text-white px-6 pt-16">
         <div className="max-w-5xl mx-auto space-y-8">
           {/* Main Heading */}
           <div className="space-y-4">
+            {user.name && (
+              <h2 className="text-2xl md:text-4xl font-semibold text-blue-100">
+                Welcome, <span className="text-white">{user.name}</span>
+              </h2>
+            )}
             <h1 className="text-4xl md:text-7xl font-extrabold leading-tight">
               <span className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent animate-pulse">
                 Explore the World
@@ -47,15 +54,26 @@ function HeroSection() {
 
           {/* Enhanced Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-            <button className="group relative bg-white text-blue-600 font-bold px-8 py-4 rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl min-w-[160px]">
+            {/* Glassy Learn More Button */}
+            <Link
+              onClick={() => setImg("home")}
+              to=""
+              className="group relative bg-white/10 text-blue-600 font-semibold px-8 py-4 rounded-full border border-white/30 backdrop-blur-md hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out"
+            >
               <span className="relative z-10">Learn More</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-            </button>
+              <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            </Link>
 
-            <button className="group relative bg-gradient-to-r from-blue-600 to-blue-600 text-white font-bold px-8 py-4 rounded-full hover:from-blue-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 min-w-[160px]">
+            {/* Glassy Book Now Button */}
+
+            <Link
+              onClick={() => setImg("booking")}
+              to="/booking"
+              className="group relative bg-blue-500/10 text-white font-semibold px-8 py-4 rounded-full border border-white/30 backdrop-blur-md hover:scale-105 hover:shadow-lg hover:shadow-blue-400/30 transition-all duration-300 ease-in-out"
+            >
               <span className="relative z-10">Book Now</span>
-              <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            </button>
+              <div className="absolute inset-0 bg-blue-500 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            </Link>
           </div>
 
           {/* Additional Info */}

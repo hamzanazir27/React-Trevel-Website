@@ -6,7 +6,7 @@ import nytimes from "../assets/logos/the-new-york-times.png";
 
 function FeaturesIn() {
   return (
-    <div className="bg-gray-100 py-10">
+    <div className=" bg-indigo-100 py-10">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-2xl font-semibold mb-6 text-gray-700">
           As Featured In

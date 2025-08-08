@@ -1,5 +1,9 @@
 import mala1 from "../assets/Papolar-destinations/malam-jaba-1.jpg";
 import mala2 from "../assets/Papolar-destinations/malam-jaba-2.jpg";
+import naran1 from "../assets/Papolar-destinations/naran-1.jpg";
+import naran2 from "../assets/Papolar-destinations/naran-2.jpg";
+import sawat1 from "../assets/Papolar-destinations/sawat-1.jpg";
+import sawat2 from "../assets/Papolar-destinations/sawat-2.jpg";
 
 const destinations = [
   {
@@ -13,21 +17,21 @@ const destinations = [
     heading: "Naran Kaghan",
     paragraph:
       "Witness the breathtaking lakes and lush green valleys. A paradise for nature and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure lovers.",
-    img1: mala1,
-    img2: mala2,
+    img1: naran1,
+    img2: naran2,
   },
   {
     heading: "Swat Valley",
     paragraph:
       "Famous for its beautiful river, hospitality, and scenic mountain viewsand adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.Explore the snowy slopes and pine-covered valleys of Malam Jabba, perfect for skiing and adventure.",
-    img1: mala1,
-    img2: mala2,
+    img1: sawat1,
+    img2: sawat2,
   },
 ];
 
 function PopularDestinations() {
   return (
-    <section className="py-20 px-6  bg-indigo-100 relative overflow-hidden">
+    <section className="py-20 px-6   relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
@@ -66,7 +70,7 @@ function DestinationCard({ heading, paragraph, img1, img2, index }) {
 
   return (
     <div
-      className={`group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl p-8 md:p-12 transition-all duration-500 hover:-translate-y-2 border border-white/20 ${
+      className={`group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl p-8 md:p-12 transition-transform duration-500 hover:scale-[1.02] border border-white/20 ${
         isEven ? "md:flex-row" : "md:flex-row-reverse"
       } flex flex-col md:flex gap-8 md:gap-12 items-center overflow-hidden`}
     >
@@ -87,57 +91,30 @@ function DestinationCard({ heading, paragraph, img1, img2, index }) {
             {paragraph}
           </p>
         </div>
-
-        {/* CTA Button */}
-        {/* <div className="pt-4">
-          <button className="group/btn relative bg-gradient-to-r from-blue-600 to-blue-600 text-white font-semibold px-8 py-4 rounded-full hover:from-blue-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
-            <span className="relative z-10 flex items-center space-x-2">
-              <span>Explore Now</span>
-              <svg
-                className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </span>
-            <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
-          </button>
-        </div> */}
       </div>
 
       {/* Images Section */}
       <div className="flex-1 relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
-          {/* First Image */}
-          <div className="relative group/img overflow-hidden rounded-2xl shadow-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* First Image (shifted up) */}
+          <div className="relative group/img overflow-hidden rounded-2xl shadow-xl transform -translate-y-3">
             <img
               src={img1}
               alt={heading}
               className="w-full h-64 sm:h-72 object-cover transition-transform duration-700 group-hover/img:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500"></div>
-
-            {/* Image Overlay Effect */}
             <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-multiply"></div>
           </div>
 
-          {/* Second Image */}
-          <div className="relative group/img overflow-hidden rounded-2xl shadow-xl sm:mt-8">
+          {/* Second Image (shifted down) */}
+          <div className="relative group/img overflow-hidden rounded-2xl shadow-xl transform translate-y-3">
             <img
               src={img2}
               alt={heading}
               className="w-full h-64 sm:h-72 object-cover transition-transform duration-700 group-hover/img:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500"></div>
-
-            {/* Image Overlay Effect */}
             <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-multiply"></div>
           </div>
         </div>

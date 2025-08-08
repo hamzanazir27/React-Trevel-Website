@@ -1,9 +1,9 @@
-import mala1 from "../assets/Papolar-destinations/malam-jaba-1.jpg";
-import mala2 from "../assets/Papolar-destinations/malam-jaba-2.jpg";
-import naran1 from "../assets/Papolar-destinations/naran-1.jpg";
-import naran2 from "../assets/Papolar-destinations/naran-2.jpg";
-import sawat1 from "../assets/Papolar-destinations/sawat-1.jpg";
-import sawat2 from "../assets/Papolar-destinations/sawat-2.jpg";
+import mala1 from "../assets/Papolar-destinations/malam-jaba-1.webp";
+import mala2 from "../assets/Papolar-destinations/malam-jaba-2.webp";
+import naran1 from "../assets/Papolar-destinations/naran-1.webp";
+import naran2 from "../assets/Papolar-destinations/naran-2.webp";
+import sawat1 from "../assets/Papolar-destinations/sawat-1.webp";
+import sawat2 from "../assets/Papolar-destinations/sawat-2.webp";
 
 const destinations = [
   {

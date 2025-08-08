@@ -81,10 +81,8 @@ function TripInfo() {
   return (
     <div className="w-full  bg-indigo-100 pt-10">
       <div className=" max-w-5xl  ml-auto mr-auto ">
-        {/* Hero Section with Carousel */}
         <div className="relative h-100   overflow-hidden">
           <div className="relative w-full h-full">
-            {/* Images */}
             <div className="relative w-full h-full">
               {allImages.map((image, index) => (
                 <div
@@ -103,25 +101,39 @@ function TripInfo() {
               ))}
             </div>
 
-            {/* Navigation Arrows */}
             {allImages.length > 1 && (
               <>
                 <button
                   onClick={prevImage}
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-white transition-all"
                 >
-                  <i className="fas fa-chevron-left"></i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    fill="#000000"
+                    viewBox="0 0 256 256"
+                  >
+                    <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+                  </svg>
                 </button>
                 <button
                   onClick={nextImage}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-gray-800 p-2 rounded-full hover:bg-white transition-all"
                 >
-                  <i className="fas fa-chevron-right"></i>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    fill="#000000"
+                    viewBox="0 0 256 256"
+                  >
+                    <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+                  </svg>
                 </button>
               </>
             )}
 
-            {/* Dots Indicator */}
             {allImages.length > 1 && (
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {allImages.map((_, index) => (
@@ -136,7 +148,6 @@ function TripInfo() {
               </div>
             )}
 
-            {/* Hero Content Overlay */}
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
               <div className="max-w-4xl mx-auto">
                 <span className="bg-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-3 inline-block">
@@ -160,9 +171,7 @@ function TripInfo() {
           </div>
         </div>
 
-        {/* Main Content */}
         <div className="max-w-4xl mx-auto px-6 py-8">
-          {/* Trip Details Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <div className="flex items-center gap-2">
@@ -206,9 +215,7 @@ function TripInfo() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Description */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-4">
                   About This Trip

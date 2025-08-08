@@ -37,12 +37,12 @@ function Footer() {
               Follow Us
             </h4>
             <div className="flex space-x-4">
-              {/* Icon 1 */}
+              {/* Instagram */}
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
+                  width="24"
+                  height="24"
                   fill="#ffffff"
                   viewBox="0 0 256 256"
                 >
@@ -50,12 +50,12 @@ function Footer() {
                 </svg>
               </div>
 
-              {/* Icon 2 */}
+              {/* Facebook */}
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
+                  width="24"
+                  height="24"
                   fill="#ffffff"
                   viewBox="0 0 256 256"
                 >
@@ -63,12 +63,12 @@ function Footer() {
                 </svg>
               </div>
 
-              {/* Icon 3 */}
+              {/* Twitter/X */}
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-300 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
+                  width="24"
+                  height="24"
                   fill="#ffffff"
                   viewBox="0 0 256 256"
                 >
@@ -84,8 +84,8 @@ function Footer() {
           <div className="flex items-center space-x-3">
             <img
               src={logo}
-              alt={logo}
-              className="h-16 w-16 rounded-full shadow-lg "
+              alt="Ubanto Tours Logo"
+              className="h-16 w-16 rounded-full shadow-lg"
             />
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
               Ubanto Tours
@@ -103,8 +103,7 @@ function Footer() {
           <ul className="space-y-3">
             <li>
               <Link
-                onClick={() => setImg("about")}
-                to="about"
+                to="/about"
                 className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 flex items-center space-x-2"
               >
                 <span className="w-1 h-1 bg-blue-500 rounded-full"></span>
@@ -166,12 +165,13 @@ function Footer() {
           </ul>
         </div>
       </div>
+
       <div className="border-t border-gray-700 mt-12 pt-8">
         <div className="text-center text-gray-400 relative z-10">
-          <p className="text-3xl">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl">
             © {new Date().getFullYear()} All rights reserved by
             <a
-              href="https://www.linkedin.com/in/hamzanazir1 "
+              href="https://www.linkedin.com/in/hamzanazir1"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent ml-1 hover:from-blue-300 hover:to-purple-400 hover:scale-105 transition-all duration-300 hover:underline"
@@ -186,5 +186,3 @@ function Footer() {
 }
 
 export default Footer;
-
-// ---------------------------------------------------------------------

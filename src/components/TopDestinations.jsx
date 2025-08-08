@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import img1 from "../assets/reviews/r-9.jpg";
-import img2 from "../assets/reviews/r-11.jpg";
+import img1 from "../assets/reviews/r-9.webp";
+import img2 from "../assets/reviews/r-11.webp";
 import { useContext } from "react";
 import TripContext from "../context/TripContxt";
 

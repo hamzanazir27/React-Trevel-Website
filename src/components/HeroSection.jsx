@@ -1,5 +1,3 @@
-import Navbar from "./Navbar";
-import heroBg from "../assets/home-herosection-background.jpg";
 import { useContext, useEffect } from "react";
 import TripContext from "../context/TripContxt";
 import { Link } from "react-router-dom";

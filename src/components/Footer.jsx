@@ -168,7 +168,7 @@ function Footer() {
 
       <div className="border-t border-gray-700 mt-12 pt-8">
         <div className="text-center text-gray-400 relative z-10">
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl">
+          <p className="text-lg sm:text-sm md:text-l lg:text-xl">
             © {new Date().getFullYear()} All rights reserved by
             <a
               href="https://www.linkedin.com/in/hamzanazir1"

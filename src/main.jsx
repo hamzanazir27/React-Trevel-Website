@@ -16,7 +16,7 @@ import Admin from "./Pages/Admin";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import TripInfo from "./components/TripInfo";
-import TripContextProvider from "./context/tripContextProvider";
+import TripContextProvider from "./context/TripContextProvider";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

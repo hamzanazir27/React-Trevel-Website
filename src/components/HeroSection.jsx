@@ -52,7 +52,6 @@ function HeroSection() {
 
           {/* Enhanced Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-            {/* Glassy Learn More Button */}
             <Link
               onClick={() => setImg("home")}
               to=""
@@ -61,8 +60,6 @@ function HeroSection() {
               <span className="relative z-10">Learn More</span>
               <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
             </Link>
-
-            {/* Glassy Book Now Button */}
 
             <Link
               onClick={() => setImg("booking")}
@@ -74,14 +71,13 @@ function HeroSection() {
             </Link>
           </div>
 
-          {/* Additional Info */}
           <div className="pt-12">
-            <div className="flex justify-center items-center space-x-8 text-sm text-gray-300">
+            <div className="flex justify-center items-center space-x-8 text-2xl text-gray-300">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 <span>Trusted by 10k+ travelers</span>
               </div>
-              <div className="hidden sm:block w-px h-4 bg-gray-500"></div>
+              {/* <div className="hidden sm:block w-px h-4 bg-gray-500"></div> */}
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
                 <span>Premium destinations</span>
@@ -90,12 +86,11 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

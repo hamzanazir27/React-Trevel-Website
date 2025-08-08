@@ -27,7 +27,7 @@ function Footer() {
               <div className="flex items-center space-x-3 group">
                 <div className="w-2 h-2 bg-blue-500 rounded-full group-hover:scale-125 transition-transform"></div>
                 <p className="text-gray-300 hover:text-white transition-colors">
-                  +92 300 00000000
+                  +92 333 3333333
                 </p>
               </div>
             </div>

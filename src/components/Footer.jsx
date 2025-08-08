@@ -10,7 +10,7 @@ function Footer() {
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
         {/* Contact Us + Social */}
         <div className="space-y-6">
           <div>

@@ -14,10 +14,10 @@ import r13 from "../assets/reviews/r-13.webp";
 import r14 from "../assets/reviews/r-14.webp";
 import r15 from "../assets/reviews/r-15.webp";
 
-import p1 from "../assets/reviews/profile/p1.jfif";
-import p2 from "../assets/reviews/profile/p2.jfif";
-import p3 from "../assets/reviews/profile/p3.jfif";
-import p4 from "../assets/reviews/profile/p4.jfif";
+import p1 from "../assets/reviews/profile/p1.webp";
+import p2 from "../assets/reviews/profile/p2.webp";
+import p3 from "../assets/reviews/profile/p3.webp";
+import p4 from "../assets/reviews/profile/p4.webp";
 function Reviews() {
   const galleryImages = [
     r1,

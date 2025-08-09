@@ -8,11 +8,11 @@ function Admin() {
   const navigate = useNavigate();
   const { admin } = useContext(TripContext);
 
-  // useEffect(() => {
-  //   if (!admin) {
-  //     navigate("/");
-  //   }
-  // }, [admin, navigate]);
+  useEffect(() => {
+    if (!admin) {
+      navigate("/");
+    }
+  }, [admin, navigate]);
 
   return (
     <>

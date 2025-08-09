@@ -32,14 +32,12 @@ function TopDestinations() {
         </h1>
 
         <div className="flex flex-col lg:flex-row gap-10">
-          {/* Left Side: Cards */}
           <div className="grid gap-8 sm:grid-cols-2 flex-1">
             {destinations.map((dest, index) => (
               <TopDestinationCard key={index} {...dest} />
             ))}
           </div>
 
-          {/* Right Side: Vertical Info */}
           <div className="flex-1 lg:max-w-xs">
             <TopDestinationInfo />
           </div>
@@ -89,10 +87,6 @@ function TopDestinationCard({ imgSrc, heading, type, days, review, tags }) {
           {" "}
           Book Now
         </Link>
-
-        {/* <button className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition-colors duration-300">
-          Book Now
-        </button> */}
       </div>
     </div>
   );

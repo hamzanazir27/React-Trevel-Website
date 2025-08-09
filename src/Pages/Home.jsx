@@ -1,6 +1,4 @@
 import Featuresin from "../components/FeaturesIn";
-import HeroSection from "../components/HeroSection";
-import Navbar from "../components/Navbar";
 import PopularDestinations from "../components/PapolarDestinations";
 import RecentTrips from "../components/RecentTrips";
 import Reviews from "../components/Reviews";

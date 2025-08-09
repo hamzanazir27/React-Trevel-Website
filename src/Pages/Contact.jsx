@@ -34,7 +34,7 @@ const Contact = () => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     alert("Thanks! We'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" }); // clear form
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (

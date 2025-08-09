@@ -47,7 +47,7 @@ function Reviews() {
             Once You Go With Us, You'll Never Forget It
           </h1>
           <div className="grid grid-cols-2 gap-3">
-            {["Zohya", "Khalid", "Mudaser", "Ahmad"].map((name, index) => (
+            {["-Zohya", "-Khalid", "-Mudaser", "-Ahmad"].map((name, index) => (
               <div key={index} className="bg-white shadow-md p-4 rounded-lg">
                 <img
                   src={profile[index]}
@@ -65,7 +65,6 @@ function Reviews() {
           </div>
         </div>
 
-        {/* Right Side - Gallery (50%) */}
         <div>
           <div className="grid grid-cols-3 gap-1 overflow-hidden">
             {galleryImages.map((img, index) => (

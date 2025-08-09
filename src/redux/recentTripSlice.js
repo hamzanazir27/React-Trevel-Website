@@ -1,7 +1,5 @@
-// import
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-// Safe localStorage access with error handling
 const getStoredTrips = () => {
   try {
     const stored = localStorage.getItem("recentTrips");
@@ -12,7 +10,6 @@ const getStoredTrips = () => {
   }
 };
 
-// Retrieve from local storage if exists, otherwise use dummy data
 const dummyTripsData = getStoredTrips() || [
   {
     id: "JSK6MDFZSKdHeqUXatYgt",
@@ -154,7 +151,6 @@ const dummyTripsData = getStoredTrips() || [
   },
 ];
 
-// Helper function to safely update localStorage
 const updateLocalStorage = (trips) => {
   try {
     localStorage.setItem("recentTrips", JSON.stringify(trips));

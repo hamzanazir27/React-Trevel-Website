@@ -12,21 +12,17 @@ function HeroSection() {
         backgroundImage: `url(${imgTray[img]})`,
       }}
     >
-      {/* Enhanced Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-black/70"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
 
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-pulse"></div>
         <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-300/30 rounded-full animate-ping"></div>
         <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-white/15 rounded-full animate-pulse delay-700"></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-20 min-h-screen flex flex-col justify-center items-center text-center text-white px-6 pt-16">
         <div className="max-w-5xl mx-auto space-y-8">
-          {/* Main Heading */}
           <div className="space-y-4">
             {user.name && (
               <h2 className="text-2xl md:text-4xl font-semibold text-blue-100">
@@ -45,12 +41,10 @@ function HeroSection() {
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto"></div>
           </div>
 
-          {/* Subtitle */}
           <p className="text-xl md:text-3xl font-light text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Your journey begins here, where dreams meet destinations
           </p>
 
-          {/* Enhanced Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
             <Link
               onClick={() => setImg("home")}
@@ -71,13 +65,12 @@ function HeroSection() {
             </Link>
           </div>
 
-          <div className="pt-12">
+          <div className="pt-4">
             <div className="flex justify-center items-center space-x-8 text-2xl text-gray-300">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                 <span>Trusted by 10k+ travelers</span>
               </div>
-              {/* <div className="hidden sm:block w-px h-4 bg-gray-500"></div> */}
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-300"></div>
                 <span>Premium destinations</span>
@@ -85,12 +78,6 @@ function HeroSection() {
             </div>
           </div>
         </div>
-
-        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

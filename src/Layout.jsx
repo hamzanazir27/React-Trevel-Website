@@ -12,7 +12,7 @@ function Layout() {
       <HeroSection />
       <LoginOverlay />
       <ConfirmationDialog />
-      <Outlet /> {/* Child routes will render here */}
+      <Outlet />
       <Footer />
     </>
   );

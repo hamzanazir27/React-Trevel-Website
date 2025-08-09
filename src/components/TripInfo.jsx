@@ -1,19 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import TripContext from "../context/TripContxt";
 
 function TripInfo() {
+  const { setImg } = useContext(TripContext);
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Find trip by ID
   const trip = useSelector((state) =>
     state.recentTrips.trips.find((trip) => trip.id === id)
   );
 
-  // If no trip found
+  useEffect(() => {
+    setCurrentImageIndex(0);
+    setIsAutoPlaying(true);
+  }, [id]);
+
   if (!trip) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -26,7 +31,7 @@ function TripInfo() {
             The trip you're looking for doesn't exist.
           </p>
           <Link
-            to="booking"
+            to="/booking"
             className="inline-block bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
           >
             Browse All Trips
@@ -48,10 +53,8 @@ function TripInfo() {
     extraImages,
   } = trip.tripsinfo;
 
-  // Combine main image with extra images for carousel
   const allImages = [mainImage, ...(extraImages || [])];
 
-  // Auto-play carousel
   useEffect(() => {
     if (isAutoPlaying && allImages.length > 1) {
       const interval = setInterval(() => {
@@ -59,7 +62,7 @@ function TripInfo() {
       }, 4000);
       return () => clearInterval(interval);
     }
-  }, [isAutoPlaying, allImages.length]);
+  }, [isAutoPlaying, allImages.length, id]);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
@@ -223,7 +226,6 @@ function TripInfo() {
                 <p className="text-gray-700 leading-relaxed">{description}</p>
               </div>
 
-              {/* Tags */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">
                   What to Expect
@@ -240,7 +242,6 @@ function TripInfo() {
                 </div>
               </div>
 
-              {/* Additional Images Grid */}
               {extraImages && extraImages.length > 0 && (
                 <div className="bg-white rounded-lg p-6 shadow-sm">
                   <h3 className="text-xl font-semibold text-gray-800 mb-4">
@@ -265,9 +266,7 @@ function TripInfo() {
               )}
             </div>
 
-            {/* Sidebar */}
             <div className="space-y-6">
-              {/* Booking Card */}
               <div className="bg-white rounded-lg p-6 shadow-sm">
                 <div className="text-center mb-6">
                   <p className="text-2xl font-bold text-gray-800 mb-1">
@@ -290,7 +289,6 @@ function TripInfo() {
                 </p>
               </div>
 
-              {/* Quick Info */}
               <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-600">
                 <h4 className="font-semibold text-gray-800 mb-3">
                   Trip Highlights

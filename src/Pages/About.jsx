@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import TripContext from "../context/TripContxt";
 
 function About() {
+  const { setImg } = useContext(TripContext);
+
   return (
     <section className="bg-indigo-100">
       <div className="px-6 py-16 max-w-screen-xl mx-auto ">
@@ -74,11 +78,10 @@ function About() {
         <div className="text-center bg-blue-600 text-white p-8 rounded-lg">
           <p className="text-lg mb-4">Ready to explore your next adventure?</p>
           <Link
-            onClick={() => setImg("booking")}
+            onClick={() => setImg && setImg("booking")}
             to="/booking"
             className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            {" "}
             View Our Packages
           </Link>
         </div>

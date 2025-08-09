@@ -46,7 +46,6 @@ function ConfirmationDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center min-h-screen w-full">
-      {/* Background Overlay with Gradient Blur */}
       <div
         className="absolute inset-0 w-full h-full backdrop-blur-md"
         style={{
@@ -56,20 +55,16 @@ function ConfirmationDialog({
         onClick={() => setIsConfirmOpen(false)}
       ></div>
 
-      {/* Dialog Box */}
       <div className="relative bg-white rounded-lg shadow-xl w-full max-w-md mx-auto p-6 transform transition-all z-10">
-        {/* Icon and Title */}
         <div className="text-center mb-4">
           <div className="text-4xl mb-3">{getIcon()}</div>
           <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
         </div>
 
-        {/* Message */}
         <div className="text-center mb-6">
           <p className="text-gray-600">{message}</p>
         </div>
 
-        {/* Action Buttons */}
         <div className="flex space-x-3">
           <button
             onClick={() => setIsConfirmOpen(false)}

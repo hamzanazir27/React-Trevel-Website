@@ -4,14 +4,12 @@ import logo from "../assets/react.svg";
 function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-16 relative overflow-hidden">
-      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
-        {/* Contact Us + Social */}
         <div className="space-y-6">
           <div>
             <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-400 bg-clip-text text-transparent">
@@ -37,7 +35,6 @@ function Footer() {
               Follow Us
             </h4>
             <div className="flex space-x-4">
-              {/* Instagram */}
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +47,6 @@ function Footer() {
                 </svg>
               </div>
 
-              {/* Facebook */}
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +59,6 @@ function Footer() {
                 </svg>
               </div>
 
-              {/* Twitter/X */}
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-lg hover:shadow-sky-500/25 transition-all duration-300 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +74,6 @@ function Footer() {
           </div>
         </div>
 
-        {/* Logo */}
         <div className="space-y-4">
           <div className="flex items-center space-x-3">
             <img
@@ -97,7 +91,6 @@ function Footer() {
           </p>
         </div>
 
-        {/* Company */}
         <div>
           <h3 className="text-xl font-bold mb-6 text-gray-200">Company</h3>
           <ul className="space-y-3">
@@ -131,7 +124,6 @@ function Footer() {
           </ul>
         </div>
 
-        {/* Resources */}
         <div>
           <h3 className="text-xl font-bold mb-6 text-gray-200">Resources</h3>
           <ul className="space-y-3">

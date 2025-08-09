@@ -1,16 +1,97 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const getStoredTrips = () => {
-  try {
-    const stored = localStorage.getItem("recentTrips");
-    return stored ? JSON.parse(stored) : null;
-  } catch (error) {
-    console.error("Error parsing stored trips:", error);
-    return null;
-  }
+const storageHelpers = {
+  getStoredTrips: () => {
+    try {
+      if (typeof Storage === "undefined" || !window.localStorage) {
+        console.warn("localStorage is not available in this environment");
+        return null;
+      }
+
+      const stored = localStorage.getItem("recentTrips");
+
+      if (!stored) {
+        return null;
+      }
+
+      const parsedData = JSON.parse(stored);
+
+      if (!Array.isArray(parsedData)) {
+        console.warn("Invalid stored trips format - not an array");
+        return null;
+      }
+
+      return parsedData;
+    } catch (error) {
+      console.error("Error parsing stored trips:", error);
+      try {
+        localStorage.removeItem("recentTrips");
+      } catch (e) {
+        console.error("Could not clear corrupted localStorage:", e);
+      }
+      return null;
+    }
+  },
+
+  updateLocalStorage: (trips) => {
+    try {
+      // Check if localStorage is available
+      if (typeof Storage === "undefined" || !window.localStorage) {
+        console.warn("localStorage is not available - data will not persist");
+        return false;
+      }
+
+      // Validate trips data
+      if (!Array.isArray(trips)) {
+        console.error(
+          "Cannot save to localStorage - trips is not an array:",
+          trips
+        );
+        return false;
+      }
+
+      const serialized = JSON.stringify(trips);
+      localStorage.setItem("recentTrips", serialized);
+
+      // Verify the save worked
+      const verification = localStorage.getItem("recentTrips");
+      if (verification === serialized) {
+        console.log("Successfully saved trips to localStorage");
+        return true;
+      } else {
+        console.error("localStorage save verification failed");
+        return false;
+      }
+    } catch (error) {
+      console.error("Error saving trips to localStorage:", error);
+
+      // Check if it's a quota exceeded error
+      if (
+        error.name === "QuotaExceededError" ||
+        error.name === "NS_ERROR_DOM_QUOTA_REACHED"
+      ) {
+        console.error(
+          "localStorage quota exceeded - consider cleaning old data"
+        );
+      }
+
+      return false;
+    }
+  },
+
+  clearStorage: () => {
+    try {
+      localStorage.removeItem("recentTrips");
+      console.log("localStorage cleared successfully");
+      return true;
+    } catch (error) {
+      console.error("Error clearing localStorage:", error);
+      return false;
+    }
+  },
 };
 
-const dummyTripsData = getStoredTrips() || [
+const dummyTripsData = [
   {
     id: "JSK6MDFZSKdHeqUXatYgt",
     tripsinfo: {
@@ -151,16 +232,18 @@ const dummyTripsData = getStoredTrips() || [
   },
 ];
 
-const updateLocalStorage = (trips) => {
-  try {
-    localStorage.setItem("recentTrips", JSON.stringify(trips));
-  } catch (error) {
-    console.error("Error saving trips to localStorage:", error);
-  }
-};
+const storedTrips = storageHelpers.getStoredTrips();
+const initialTrips = storedTrips || dummyTripsData;
+
+if (!storedTrips && initialTrips === dummyTripsData) {
+  console.log("Initializing localStorage with default trips data");
+  storageHelpers.updateLocalStorage(initialTrips);
+}
 
 const initialState = {
-  trips: dummyTripsData,
+  trips: initialTrips,
+  isLoading: false,
+  error: null,
 };
 
 const recentTripSlice = createSlice({
@@ -169,29 +252,142 @@ const recentTripSlice = createSlice({
 
   reducers: {
     addRecentTrip: (state, action) => {
-      const trip = {
-        id: nanoid(),
-        tripsinfo: { ...action.payload },
-      };
+      try {
+        if (!action.payload || typeof action.payload !== "object") {
+          console.error(
+            "Invalid trip data provided to addRecentTrip:",
+            action.payload
+          );
+          state.error = "Invalid trip data";
+          return;
+        }
 
-      state.trips.push(trip);
-      updateLocalStorage(state.trips);
+        const trip = {
+          id: nanoid(),
+          tripsinfo: { ...action.payload },
+        };
+
+        state.trips.unshift(trip);
+        state.error = null;
+
+        const success = storageHelpers.updateLocalStorage(state.trips);
+        if (!success) {
+          state.error = "Failed to save trip to storage";
+        }
+
+        console.log("Trip added successfully:");
+      } catch (error) {
+        console.error("Error adding trip:", error);
+        state.error = "Failed to add trip";
+      }
     },
 
     deleteRecentTrips: (state, action) => {
-      state.trips = state.trips.filter((trip) => trip.id !== action.payload);
-      updateLocalStorage(state.trips);
+      try {
+        const tripId = action.payload;
+
+        if (!tripId) {
+          console.error("No trip ID provided for deletion");
+          state.error = "Invalid trip ID";
+          return;
+        }
+
+        const originalLength = state.trips.length;
+        state.trips = state.trips.filter((trip) => trip.id !== tripId);
+
+        if (state.trips.length === originalLength) {
+          console.warn("Trip not found for deletion:", tripId);
+          state.error = "Trip not found";
+          return;
+        }
+
+        state.error = null;
+
+        // Update localStorage
+        const success = storageHelpers.updateLocalStorage(state.trips);
+        if (!success) {
+          state.error = "Failed to update storage after deletion";
+        }
+
+        console.log("Trip deleted successfully:");
+      } catch (error) {
+        console.error("Error deleting trip:", error);
+        state.error = "Failed to delete trip";
+      }
     },
 
     editRecentTrips: (state, action) => {
-      const { id, updatedInfo } = action.payload;
+      try {
+        const { id, updatedInfo } = action.payload;
 
-      state.trips = state.trips.map((trip) =>
-        trip.id === id ? { id, tripsinfo: { ...updatedInfo } } : trip
-      );
+        if (!id || !updatedInfo) {
+          console.error(
+            "Invalid data provided to editRecentTrips:",
+            action.payload
+          );
+          state.error = "Invalid update data";
+          return;
+        }
 
-      updateLocalStorage(state.trips);
+        const tripIndex = state.trips.findIndex((trip) => trip.id === id);
+
+        if (tripIndex === -1) {
+          console.error("Trip not found for editing:", id);
+          state.error = "Trip not found";
+          return;
+        }
+
+        state.trips[tripIndex] = {
+          id,
+          tripsinfo: { ...updatedInfo },
+        };
+
+        state.error = null;
+
+        const success = storageHelpers.updateLocalStorage(state.trips);
+        if (!success) {
+          state.error = "Failed to save changes to storage";
+        }
+
+        console.log("Trip updated successfully:");
+      } catch (error) {
+        console.error("Error editing trip:", error);
+        state.error = "Failed to update trip";
+      }
     },
+
+    // clearError: (state) => {
+    //   state.error = null;
+    // },
+
+    // Utility action to manually sync with localStorage
+    // syncWithStorage: (state) => {
+    //   try {
+    //     const storedTrips = storageHelpers.getStoredTrips();
+    //     if (storedTrips) {
+    //       state.trips = storedTrips;
+    //       state.error = null;
+    //       console.log("Synced with localStorage successfully");
+    //     }
+    //   } catch (error) {
+    //     console.error("Error syncing with storage:", error);
+    //     state.error = "Failed to sync with storage";
+    //   }
+    // },
+
+    // Action to clear all storage and reset to defaults
+    // resetToDefaults: (state) => {
+    //   try {
+    //     storageHelpers.clearStorage();
+    //     state.trips = dummyTripsData;
+    //     state.error = null;
+    //     storageHelpers.updateLocalStorage(state.trips);
+    //     console.log("Reset to default trips data");
+    //   } catch (error) {
+    //     console.error("Error resetting to defaults:", error);
+    //     state.error = "Failed to reset data";
+    //   }
+    // },
   },
 });
 
